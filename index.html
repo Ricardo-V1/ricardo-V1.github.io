@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>O Poder da Transformação</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .imagem-transformadora {
+      position: relative;
+      display: inline-block;
+      width: 260px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .imagem-transformadora img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .efeito-luz {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+      animation: brilhar 3s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes brilhar {
+      0% { left: -100%; opacity: 0.2; }
+      50% { left: 100%; opacity: 0.4; }
+      100% { left: -100%; opacity: 0.2; }
+    }
+
+    .botao {
+      background-color: limegreen;
+      color: black;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .faq-box {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .pergunta {
+      background-color: #222;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      margin: 10px 0;
+      text-align: left;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .pergunta:hover {
+      background-color: #333;
+    }
+
+    .resposta {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #ccc;
+      display: none;
+    }
+
+    .aviso {
+      color: #FFD700;
+      font-style: italic;
+      margin-top: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .icone-cadeado {
+      font-size: 22px;
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>
+    <div class="imagem-transformadora">
+      <img src="https://i.postimg.cc/5N1jHWJx/IMG-20250518-162142.png" alt="Capa do Livro">
+      <div class="efeito-luz"></div>
+    </div><br>
+    O Poder da Transformação
+  </h1>
+
+  <h2>Da Dor ao Poder Interior</h2>
+  <p><del>R$ 69,90</del><br><strong style="font-size: 24px; color: lime;">R$ 34,90</strong></p>
+
+  <button class="botao">
+    <span class="icone-cadeado">🔒</span>
+    Comprar Agora
+  </button>
+  <p class="aviso">
+    Ops! Este produto ainda não está disponível — Agradecemos sua tentativa de solicitação imediata. Logo seu e-book estará aqui para que possa comprar e desfrutar a leitura deste guia; levando a ti à transformação!
+  </p>
+
+  <p style="color: red;">Oferta termina em: 6d 23h 59m 27s</p>
+  <p>Este e-book foi escrito para aqueles que se sentem estagnados, vazios ou emocionalmente exaustos. Através de uma jornada profunda, você será guiado do caos interno à sua força transformadora.</p>
+
+  <div class="faq-box">
+    <h3>Quer saber mais? Escolha uma pergunta:</h3>
+
+    <button class="pergunta" onclick="mostrarResposta(0)">1. Sobre o que exatamente é esse livro?</button>
+    <div class="resposta" id="resposta0">
+      Este não é apenas um livro. É um convite silencioso para encarar a dor que você esconde, e transformá-la em poder.
+    </div>
+
+    <button class="pergunta" onclick="mostrarResposta(1)">2. Quem é o autor?</button>
+    <div class="resposta" id="resposta1">
+      O autor é alguém que viveu na pele o que muitos só tentam entender com a mente.
+    </div>
+
+    <button class="pergunta" onclick="mostrarResposta(2)">3. Esse livro realmente funciona?</button>
+    <div class="resposta" id="resposta2">
+      Se você apenas ler, será mais um PDF. Mas se permitir sentir, aplicar e se olhar com coragem, ele pode ser um divisor de águas.
+    </div>
+
+    <button class="pergunta" onclick="mostrarResposta(3)">4. Por que ele está com esse preço tão baixo?</button>
+    <div class="resposta" id="resposta3">
+      Porque o objetivo é alcançar quem precisa, não apenas quem pode pagar.
+    </div>
+
+    <button class="pergunta" onclick="mostrarResposta(4)">5. E se eu comprar e não gostar?</button>
+    <div class="resposta" id="resposta4">
+      Então você terá investido R$ 34,90 em si mesmo – e isso nunca é perda.
+    </div>
+  </div>
+
+  <script>
+    function mostrarResposta(id) {
+      const resposta = document.getElementById('resposta' + id);
+      resposta.style.display = resposta.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+  </html>
