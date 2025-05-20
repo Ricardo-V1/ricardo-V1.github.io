@@ -2,86 +2,175 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>O Poder da Transformação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caminho da Transformação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
+      background-color: #000; /* Fundo preto sólido */
+      color: #fff; /* Texto branco */
+      font-family: 'Roboto', Arial, sans-serif; /* Fonte Roboto, similar à imagem */
       text-align: center;
-      padding: 20px;
-      /* Ajustes para melhor responsividade */
-      box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
-      margin: 0; /* Remove margens padrão do body */
+      padding: 0; /* Remover padding padrão para controle total */
+      margin: 0; /* Remover margens padrão do body */
+      box-sizing: border-box;
+      line-height: 1.5; /* Espaçamento de linha para melhor leitura */
     }
 
-    .imagem-transformadora {
+    /* Conteúdo principal para centralizar e limitar largura */
+    .container {
+      max-width: 600px; /* Limite de largura para o conteúdo principal */
+      margin: 0 auto; /* Centraliza o container */
+      padding: 20px; /* Padding interno para as laterais */
+      box-sizing: border-box;
+    }
+
+    .header-content {
+        padding-top: 30px; /* Espaço do topo da tela até o conteúdo */
+    }
+
+    /* Estilos para a imagem da capa e seu efeito */
+    .book-cover-container {
       position: relative;
       display: inline-block;
-      width: 80%; /* Ajuste para ser responsivo, ocupando 80% da largura do pai */
-      max-width: 260px; /* Mantém a largura máxima original para telas maiores */
+      width: 80%; /* Ajuste para ser responsivo */
+      max-width: 260px; /* Largura máxima da capa */
       margin-bottom: 20px;
       border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 0 20px rgba(146, 255, 0, 0.5); /* Sombra verde sutil para destacar a capa */
     }
 
-    .imagem-transformadora img {
+    .book-cover-container img {
       width: 100%;
       border-radius: 10px;
       display: block;
-      height: auto; /* Garante que a altura seja ajustada automaticamente */
+      height: auto;
     }
 
-    .efeito-luz {
+    .light-effect {
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
       background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.3), rgba(255,255,255,0.05));
-      animation: brilhar 3s infinite;
-      pointer-events: none;
+      animation: shine 3s infinite;
+      pointer-events: none; /* Garante que o efeito não bloqueie cliques */
     }
 
-    @keyframes brilhar {
+    @keyframes shine {
       0% { left: -100%; opacity: 0.2; }
       50% { left: 100%; opacity: 0.4; }
       100% { left: -100%; opacity: 0.2; }
     }
 
-    .botao {
-      background-color: limegreen;
-      color: black;
+
+    .title-main {
+      font-size: 28px; /* Ajuste para o tamanho do título principal */
+      font-weight: 700; /* Negrito para o título principal */
+      margin-top: 15px; /* Espaço entre a capa e o título */
+      margin-bottom: 5px; /* Menor margem abaixo do título */
+      line-height: 1.2; /* Espaçamento de linha para o título */
+    }
+
+    .subtitle-main {
+      font-size: 18px; /* Tamanho para o subtítulo */
+      font-weight: 400; /* Não negrito, como na imagem */
+      color: #ccc; /* Tom um pouco mais claro */
+      margin-bottom: 20px; /* Espaço abaixo do subtítulo */
+    }
+
+    .price-old {
+      font-size: 18px; /* Tamanho da fonte para o preço antigo */
+      color: #aaa; /* Cor cinza para o preço riscado */
+      text-decoration: line-through; /* Linha sobre o preço */
+      margin-bottom: 0;
+    }
+
+    .price-current {
+      font-size: 32px; /* Tamanho maior para o preço atual */
+      font-weight: 700; /* Negrito para o preço atual */
+      color: #92FF00; /* Verde vibrante da imagem */
+      margin-top: 5px; /* Pequeno espaço acima do preço */
+    }
+
+    .buy-button {
+      background-color: #92FF00; /* Verde vibrante da imagem */
+      color: #000; /* Texto preto */
       padding: 15px 30px;
       font-size: 18px;
+      font-weight: 700; /* Negrito para o texto do botão */
       border: none;
-      border-radius: 20px;
+      border-radius: 50px; /* Bem arredondado, como na imagem */
       cursor: pointer;
-      margin: 20px 0;
-      position: relative;
-      width: calc(100% - 40px); /* Ajuste para ocupar a largura total com padding */
-      max-width: 300px; /* Limita a largura máxima do botão */
+      margin: 25px auto; /* Margem para cima/baixo e centraliza */
+      display: flex; /* Para alinhar ícone e texto */
+      align-items: center; /* Alinha verticalmente */
+      justify-content: center; /* Centraliza horizontalmente */
+      width: calc(100% - 40px); /* Ocupa largura total com padding */
+      max-width: 280px; /* Limita a largura máxima do botão */
+      box-shadow: 0 0 15px rgba(146, 255, 0, 0.4); /* Leve brilho verde */
     }
 
+    .buy-button:active {
+        transform: translateY(1px); /* Pequeno efeito ao clicar */
+    }
+
+    .lock-icon {
+      font-size: 22px;
+      margin-right: 8px; /* Espaço entre o ícone e o texto */
+    }
+
+    .unavailable-message {
+      color: #FFD700; /* Cor amarela para o aviso */
+      font-style: italic;
+      font-size: 14px;
+      margin: 20px auto;
+      max-width: 400px;
+      line-height: 1.4;
+    }
+
+    .offer-timer {
+      color: #FF0000; /* Vermelho para o contador */
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 10px;
+      margin-bottom: 20px; /* Espaço para o próximo parágrafo */
+    }
+
+    .description-text {
+      font-size: 16px; /* Tamanho para o texto da descrição */
+      line-height: 1.5; /* Espaçamento de linha para leitura */
+      margin-top: 20px;
+      text-align: left; /* Alinha o texto da descrição à esquerda */
+    }
+
+    /* FAQ Section */
     .faq-box {
-      background-color: #111;
+      background-color: #000; /* Fundo preto (mesmo do body para bordas invisíveis) */
       padding: 20px;
       border-radius: 15px;
-      margin-top: 30px;
+      margin-top: 40px; /* Mais espaço acima do FAQ */
       text-align: left;
-      /* Ajustes para ser responsivo */
-      width: calc(100% - 40px); /* Ajuste para ocupar a largura total com padding */
-      max-width: 600px; /* Limita a largura máxima da caixa de FAQ */
-      margin-left: auto;
-      margin-right: auto;
-      box-sizing: border-box;
+      border: 1px solid #222; /* Borda sutil */
     }
 
-    .pergunta {
-      background-color: #222;
+    .faq-box h3 {
+      font-size: 18px;
+      text-align: center; /* Centraliza o título do FAQ */
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .faq-question {
+      background-color: #1a1a1a; /* Fundo ligeiramente mais claro para as perguntas */
       border: none;
-      color: white;
-      padding: 12px 20px;
+      color: #fff;
+      padding: 15px 20px;
       margin: 10px 0;
       text-align: left;
       font-size: 16px;
@@ -89,101 +178,81 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s;
-      box-sizing: border-box; /* Inclui padding no width */
+      box-sizing: border-box;
+      font-weight: 400; /* Normal para o texto da pergunta */
     }
 
-    .pergunta:hover {
-      background-color: #333;
+    .faq-question:hover {
+      background-color: #2a2a2a;
     }
 
-    .resposta {
+    .faq-answer {
       margin-top: 10px;
       font-size: 15px;
-      color: #ccc;
+      color: #bbb; /* Cor um pouco mais clara para a resposta */
       display: none;
-      padding: 0 20px; /* Adiciona padding para o texto não colar nas bordas */
-    }
-
-    .aviso {
-      color: #FFD700;
-      font-style: italic;
-      margin-top: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 20px; /* Adiciona padding para o texto não colar nas bordas */
-      box-sizing: border-box;
-    }
-
-    .icone-cadeado {
-      font-size: 22px;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    /* Adições para melhorar a legibilidade em telas menores */
-    p {
-        font-size: 1em; /* Garante tamanho de fonte base para parágrafos */
-        padding: 0 10px; /* Pequeno padding para texto não grudar nas laterais */
-        box-sizing: border-box;
-    }
-
-    h1, h2, h3 {
-        padding: 0 10px; /* Pequeno padding para títulos não grudarem nas laterais */
-        box-sizing: border-box;
+      padding: 0 20px 15px; /* Adiciona padding e um pouco de espaço abaixo */
     }
   </style>
 </head>
 <body>
 
-  <h1>
-    <div class="imagem-transformadora">
-      <img src="https://i.postimg.cc/5N1jHWJx/IMG-20250518-162142.png" alt="Capa do Livro">
-      <div class="efeito-luz"></div>
-    </div><br>
-    O Poder da Transformação
-  </h1>
+  <div class="container">
+    <div class="header-content">
+      <div class="book-cover-container">
+        <img src="https://i.postimg.cc/5N1jHWJx/IMG-20250518-162142.png" alt="Capa do Livro">
+        <div class="light-effect"></div>
+      </div>
 
-  <h2>Da Dor ao Poder Interior</h2>
-  <p><del>R$ 69,90</del><br><strong style="font-size: 24px; color: lime;">R$ 34,90</strong></p>
+      <h1 class="title-main">Caminho da<br>Transformação</h1>
+      <h2 class="subtitle-main">Da Dor ao Poder Interior</h2>
 
-  <button class="botao">
-    <span class="icone-cadeado">🔒</span>
-    Comprar Agora
-  </button>
-  <p class="aviso">
-    Ops! Este produto ainda não está disponível — Agradecemos sua tentativa de solicitação imediata. Logo seu e-book estará aqui para que possa comprar e desfrutar a leitura deste guia; levando a ti à transformação!
-  </p>
+      <p class="price-old">R$ 69,90</p>
+      <p class="price-current">R$ 34,90</p>
 
-  <p style="color: red;">Oferta termina em: 6d 23h 59m 27s</p>
-  <p>Este e-book foi escrito para aqueles que se sentem estagnados, vazios ou emocionalmente exaustos. Através de uma jornada profunda, você será guiado do caos interno à sua força transformadora.</p>
+      <button class="buy-button">
+        <span class="lock-icon">🔒</span>
+        Comprar Agora
+      </button>
 
-  <div class="faq-box">
-    <h3>Quer saber mais? Escolha uma pergunta:</h3>
+      <p class="unavailable-message">
+        Ops! Este produto ainda não está disponível — Agradecemos sua tentativa de solicitação imediata. Logo seu e-book estará aqui para que possa comprar e desfrutar a leitura deste guia; levando a ti à transformação!
+      </p>
 
-    <button class="pergunta" onclick="mostrarResposta(0)">1. Sobre o que exatamente é esse livro?</button>
-    <div class="resposta" id="resposta0">
-      Este não é apenas um livro. É um convite silencioso para encarar a dor que você esconde, e transformá-la em poder.
+      <p class="offer-timer">Oferta termina em: 6d 23h 59m 44s</p>
     </div>
 
-    <button class="pergunta" onclick="mostrarResposta(1)">2. Quem é o autor?</button>
-    <div class="resposta" id="resposta1">
-      O autor é alguém que viveu na pele o que muitos só tentam entender com a mente.
-    </div>
+    <p class="description-text">
+      Este e-book foi escrito para aqueles que se sentem estagnados, vazios ou emocionalmente exaustos. Através de uma jornada profunda, você será guiado do caos interno à sua força transformadora.
+    </p>
 
-    <button class="pergunta" onclick="mostrarResposta(2)">3. Esse livro realmente funciona?</button>
-    <div class="resposta" id="resposta2">
-      Se você apenas ler, será mais um PDF. Mas se permitir sentir, aplicar e se olhar com coragem, ele pode ser um divisor de águas.
-    </div>
+    <div class="faq-box">
+      <h3>Quer saber mais? Escolha uma pergunta:</h3>
 
-    <button class="pergunta" onclick="mostrarResposta(3)">4. Por que ele está com esse preço tão baixo?</button>
-    <div class="resposta" id="resposta3">
-      Porque o objetivo é alcançar quem precisa, não apenas quem pode pagar.
-    </div>
+      <button class="faq-question" onclick="mostrarResposta(0)">1. Sobre o que exatamente é esse livro?</button>
+      <div class="faq-answer" id="resposta0">
+        Este não é apenas um livro. É um convite silencioso para encarar a dor que você esconde, e transformá-la em poder.
+      </div>
 
-    <button class="pergunta" onclick="mostrarResposta(4)">5. E se eu comprar e não gostar?</button>
-    <div class="resposta" id="resposta4">
-      Então você terá investido R$ 34,90 em si mesmo – e isso nunca é perda.
+      <button class="faq-question" onclick="mostrarResposta(1)">2. Quem é o autor?</button>
+      <div class="faq-answer" id="resposta1">
+        O autor é alguém que viveu na pele o que muitos só tentam entender com a mente.
+      </div>
+
+      <button class="faq-question" onclick="mostrarResposta(2)">3. Esse livro realmente funciona?</button>
+      <div class="faq-answer" id="resposta2">
+        Se você apenas ler, será mais um PDF. Mas se permitir sentir, aplicar e se olhar com coragem, ele pode ser um divisor de águas.
+      </div>
+
+      <button class="faq-question" onclick="mostrarResposta(3)">4. Por que ele está com esse preço tão baixo?</button>
+      <div class="faq-answer" id="resposta3">
+        Porque o objetivo é alcançar quem precisa, não apenas quem pode pagar.
+      </div>
+
+      <button class="faq-question" onclick="mostrarResposta(4)">5. E se eu comprar e não gostar?</button>
+      <div class="faq-answer" id="resposta4">
+        Então você terá investido R$ 34,90 em si mesmo – e isso nunca é perda.
+      </div>
     </div>
   </div>
 
