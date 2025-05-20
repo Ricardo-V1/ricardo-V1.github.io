@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>O Poder da Transformação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>O Poder da Transformação</title>
   <style>
     body {
       background-color: black;
@@ -10,12 +10,16 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
+      /* Ajustes para melhor responsividade */
+      box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
+      margin: 0; /* Remove margens padrão do body */
     }
 
     .imagem-transformadora {
       position: relative;
       display: inline-block;
-      width: 260px;
+      width: 80%; /* Ajuste para ser responsivo, ocupando 80% da largura do pai */
+      max-width: 260px; /* Mantém a largura máxima original para telas maiores */
       margin-bottom: 20px;
       border-radius: 10px;
       overflow: hidden;
@@ -25,6 +29,7 @@
       width: 100%;
       border-radius: 10px;
       display: block;
+      height: auto; /* Garante que a altura seja ajustada automaticamente */
     }
 
     .efeito-luz {
@@ -54,6 +59,8 @@
       cursor: pointer;
       margin: 20px 0;
       position: relative;
+      width: calc(100% - 40px); /* Ajuste para ocupar a largura total com padding */
+      max-width: 300px; /* Limita a largura máxima do botão */
     }
 
     .faq-box {
@@ -62,6 +69,12 @@
       border-radius: 15px;
       margin-top: 30px;
       text-align: left;
+      /* Ajustes para ser responsivo */
+      width: calc(100% - 40px); /* Ajuste para ocupar a largura total com padding */
+      max-width: 600px; /* Limita a largura máxima da caixa de FAQ */
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
     }
 
     .pergunta {
@@ -76,6 +89,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s;
+      box-sizing: border-box; /* Inclui padding no width */
     }
 
     .pergunta:hover {
@@ -87,6 +101,7 @@
       font-size: 15px;
       color: #ccc;
       display: none;
+      padding: 0 20px; /* Adiciona padding para o texto não colar nas bordas */
     }
 
     .aviso {
@@ -96,12 +111,26 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      padding: 0 20px; /* Adiciona padding para o texto não colar nas bordas */
+      box-sizing: border-box;
     }
 
     .icone-cadeado {
       font-size: 22px;
       display: block;
       margin-bottom: 5px;
+    }
+
+    /* Adições para melhorar a legibilidade em telas menores */
+    p {
+        font-size: 1em; /* Garante tamanho de fonte base para parágrafos */
+        padding: 0 10px; /* Pequeno padding para texto não grudar nas laterais */
+        box-sizing: border-box;
+    }
+
+    h1, h2, h3 {
+        padding: 0 10px; /* Pequeno padding para títulos não grudarem nas laterais */
+        box-sizing: border-box;
     }
   </style>
 </head>
@@ -166,4 +195,4 @@
   </script>
 
 </body>
-  </html>
+</html>
