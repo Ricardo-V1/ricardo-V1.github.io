@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,7 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #000; /* Fundo preto sólido */
+      background-color: #000; /* Fundo preto sólido - será o fallback se a imagem não carregar */
+      background-image: url("https://i.postimg.cc/0yGm0YMJ/file-00000000351061f8aa6e1fff38ad7158.png"); /* Sua imagem de fundo */
+      background-size: cover; /* Faz a imagem cobrir toda a área do body */
+      background-position: center center; /* Centraliza a imagem */
+      background-repeat: no-repeat; /* Evita que a imagem se repita */
+      background-attachment: fixed; /* Fixa a imagem de fundo enquanto o conteúdo rola */
       color: #fff; /* Texto branco */
       font-family: 'Roboto', Arial, sans-serif; /* Fonte Roboto, similar à imagem */
       text-align: center;
@@ -25,6 +31,9 @@
       margin: 0 auto; /* Centraliza o container */
       padding: 20px; /* Padding interno para as laterais */
       box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.7); /* Fundo preto com 70% de opacidade */
+      border-radius: 10px; /* Bordas arredondadas para o container */
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Sombra para destacar o container */
     }
 
     .header-content {
@@ -40,7 +49,6 @@
       margin-bottom: 20px;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(146, 255, 0, 0.5); /* Sombra verde sutil para destacar a capa */
     }
 
     .book-cover-container img {
@@ -67,7 +75,6 @@
       100% { left: -100%; opacity: 0.2; }
     }
 
-
     .title-main {
       font-size: 28px; /* Ajuste para o tamanho do título principal */
       font-weight: 700; /* Negrito para o título principal */
@@ -81,13 +88,6 @@
       font-weight: 400; /* Não negrito, como na imagem */
       color: #ccc; /* Tom um pouco mais claro */
       margin-bottom: 20px; /* Espaço abaixo do subtítulo */
-    }
-
-    .price-old {
-      font-size: 18px; /* Tamanho da fonte para o preço antigo */
-      color: #aaa; /* Cor cinza para o preço riscado */
-      text-decoration: line-through; /* Linha sobre o preço */
-      margin-bottom: 0;
     }
 
     .price-current {
@@ -131,14 +131,6 @@
       margin: 20px auto;
       max-width: 400px;
       line-height: 1.4;
-    }
-
-    .offer-timer {
-      color: #FF0000; /* Vermelho para o contador */
-      font-size: 16px;
-      font-weight: 700;
-      margin-top: 10px;
-      margin-bottom: 20px; /* Espaço para o próximo parágrafo */
     }
 
     .description-text {
@@ -193,6 +185,92 @@
       display: none;
       padding: 0 20px 15px; /* Adiciona padding e um pouco de espaço abaixo */
     }
+
+    /* Estilos para o botão de ajuda (círculo com interrogação) */
+    .help-button-container {
+        position: fixed; /* Fixa o botão na tela */
+        top: 15px; /* Diminui um pouco o topo */
+        right: 15px; /* Diminui um pouco a direita */
+        z-index: 1000; /* Garante que fique acima de outros elementos */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        /* Removido: background-color, padding, border-radius que criavam o "quadrado" */
+    }
+
+    .help-circle {
+        width: 35px; /* Diminui o tamanho do círculo */
+        height: 35px; /* Diminui o tamanho do círculo */
+        background-color: #000; /* Fundo preto para o círculo */
+        border-radius: 50%; /* Faz um círculo */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Removido: box-shadow */ /* Removendo o sombreamento/glow */
+        margin-bottom: 2px; /* Espaço entre o círculo e o texto "Clique Aqui" */
+        opacity: 0.2; /* Baixíssima opacidade para o círculo */
+        transition: opacity 0.3s ease; /* Transição para a opacidade */
+
+        /* Estilo para a interrogação de texto */
+        color: #fff; /* Cor branca para a interrogação */
+        font-size: 20px; /* Tamanho da interrogação ajustado */
+        font-weight: bold; /* Deixa a interrogação em negrito */
+        line-height: 1; /* Ajusta a altura da linha para centralizar verticalmente */
+        user-select: none; /* Impede a seleção de texto ao clicar */
+    }
+
+    .help-circle.hidden {
+        opacity: 0; /* Esconde a interrogação definindo opacidade 0 */
+        pointer-events: none; /* Impede cliques quando invisível */
+    }
+
+    .help-text {
+        color: #fff;
+        font-size: 9px; /* Fonte ainda menor */
+        font-weight: 700;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.8); /* Sombra no texto para melhor legibilidade, um pouco menor */
+        opacity: 0.2; /* Baixíssima opacidade para o texto */
+        transition: opacity 0.3s ease; /* Transição para a opacidade */
+        user-select: none; /* Impede a seleção de texto ao clicar */
+    }
+
+    .help-text.hidden {
+        opacity: 0; /* Esconde o texto */
+        pointer-events: none; /* Impede cliques quando invisível */
+    }
+
+    /* Estilos para a barra de informação */
+    .info-bar {
+        position: fixed;
+        top: 0; /* Alterado para aparecer do topo */
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro semitransparente */
+        color: #fff;
+        padding: 15px 20px;
+        text-align: center;
+        font-size: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para baixo */
+        transform: translateY(-100%); /* Esconde a barra para fora da tela (para cima) */
+        transition: transform 0.3s ease-out; /* Adiciona uma transição suave */
+        box-sizing: border-box;
+        z-index: 999;
+    }
+
+    .info-bar.show {
+        transform: translateY(0); /* Mostra a barra */
+    }
+
+    .info-bar-close {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -207,7 +285,6 @@
       <h1 class="title-main">Caminho da<br>Transformação</h1>
       <h2 class="subtitle-main">Da Dor ao Poder Interior</h2>
 
-      <p class="price-old">R$ 69,90</p>
       <p class="price-current">R$ 34,90</p>
 
       <button class="buy-button">
@@ -218,8 +295,6 @@
       <p class="unavailable-message">
         Ops! Este produto ainda não está disponível — Agradecemos sua tentativa de solicitação imediata. Logo seu e-book estará aqui para que possa comprar e desfrutar a leitura deste guia; levando a ti à transformação!
       </p>
-
-      <p class="offer-timer">Oferta termina em: 6d 23h 59m 44s</p>
     </div>
 
     <p class="description-text">
@@ -256,10 +331,40 @@
     </div>
   </div>
 
+  <div class="info-bar" id="infoBar">
+      Em caso de problemas ou até dúvidas sobre a data do lançamento do E-book, considere por favor enviar me um direct!
+      <span class="info-bar-close" onclick="toggleInfoBar()">×</span>
+  </div>
+
+  <div class="help-button-container" id="helpButtonContainer" onclick="toggleInfoBar()">
+      <div class="help-circle">
+          ?
+      </div>
+      <span class="help-text">Clique Aqui</span>
+  </div>
+
   <script>
     function mostrarResposta(id) {
       const resposta = document.getElementById('resposta' + id);
       resposta.style.display = resposta.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleInfoBar() {
+      const infoBar = document.getElementById('infoBar');
+      const helpCircle = document.querySelector('.help-circle');
+      const helpText = document.querySelector('.help-text');
+
+      infoBar.classList.toggle('show');
+
+      // Se a infoBar estiver mostrando, esconde o círculo e o texto do botão
+      if (infoBar.classList.contains('show')) {
+        helpCircle.classList.add('hidden');
+        helpText.classList.add('hidden');
+      } else {
+        // Caso contrário, mostra o círculo e o texto do botão
+        helpCircle.classList.remove('hidden');
+        helpText.classList.remove('hidden');
+      }
     }
   </script>
 
