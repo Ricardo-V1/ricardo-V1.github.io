@@ -784,7 +784,7 @@
       transform: translateY(0);
     }
 
-        .info-bar-close {
+    .info-bar-close {
       position: absolute;
       top: 50%;
       right: 20px;
@@ -875,7 +875,47 @@
         font-size: 30px;
       }
     }
-  </style>
+  
+.whatsapp-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: rgba(255, 215, 0, 0.1);
+  color: #FFD700;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.whatsapp-tooltip.visible {
+  opacity: 1;
+}
+
+
+.btn-instagram {
+  display: inline-block;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  padding: 15px 30px;
+  font-weight: 600;
+  font-size: 18px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(204, 35, 102, 0.4);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.btn-instagram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(204, 35, 102, 0.6);
+}
+
+</style>
 </head>
 <body>
 
@@ -925,6 +965,7 @@
         </div>
       </div>
     </div>
+
     <div class="description-section">
       <h3 class="description-title">Sobre o E-book</h3>
       <div class="description-text">
@@ -961,6 +1002,7 @@
         </div>
       </div>
     </div>
+
     <div class="faq-section">
       <h3 class="faq-title">Perguntas Frequentes</h3>
       <div class="faq-box">
@@ -1006,6 +1048,7 @@
         </div>
       </div>
     </div>
+
     <div class="cta-section">
       <div class="cta-box">
         <h3 class="cta-title">Pronto para Transformar sua Dor em Poder?</h3>
@@ -1019,13 +1062,49 @@
 
     <div class="footer">
       <p class="footer-text">© 2025 Caminho da Transformação. Todos os direitos reservados.</p>
-      <div class="footer-links">
-        <a href="#" class="footer-link">Termos de Uso</a>
-        <a href="#" class="footer-link">Política de Privacidade</a>
-        <a href="#" class="footer-link">Contato</a>
-      </div>
+      
+    </div>
+  
+<div class="social-section" style="margin: 40px auto; text-align: center;">
+  <a href="https://www.instagram.com/ricardo._viana1" target="_blank" class="btn-instagram"><i class="fab fa-instagram"></i> Instagram</a>
+  <div class="buy-button" onclick="showWhatsAppMessage()" style="cursor: pointer; position: relative;">
+    WhatsApp
+    <span id="whatsappTooltip" class="whatsapp-tooltip">Ops! Esta função não está disponível.</span>
+  </div>
+</div>
+
+
+<div class="benefits-section">
+  <h3 class="benefits-title">O Que Você Aprenderá com Este E-book</h3>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-search"></i></div>
+      <h4 class="benefit-title">Entendimento da Dor</h4>
+      <p class="benefit-text">Compreenda o papel da dor como um sinal de transformação e desperte sua escuta interior.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-route"></i></div>
+      <h4 class="benefit-title">Caminho Prático</h4>
+      <p class="benefit-text">Passo a passo para sair da estagnação emocional e construir uma vida com mais sentido.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-fire"></i></div>
+      <h4 class="benefit-title">Redescoberta da Força</h4>
+      <p class="benefit-text">Acesse sua força interior sem depender da motivação externa. Uma jornada para dentro de si.</p>
     </div>
   </div>
+</div>
+
+
+<div class="description-section">
+  <h3 class="description-title">Sobre o Leitor</h3>
+  <div class="description-text">
+    <p>Este livro nasceu da dor, mas não da dor como fim — e sim como portal. Escrito por alguém que, sem formação tradicional, mergulhou como autodidata no universo da saúde mental, das emoções humanas e do poder da transformação, ele não é fruto de pesquisa acadêmica, mas de uma necessidade real de sobrevivência emocional e, sobretudo, de renascimento.</p>
+    <p>Ele foi criado para transformar o autor — e agora, como um espelho, pode transformar você também. Este e-book é um reflexo íntimo de uma jornada que começa onde muitos desistem: no vazio. E se você chegou até aqui, talvez esteja pronto para olhar para dentro com mais coragem do que nunca.</p>
+  </div>
+</div>
+
+</div>
 
   <div class="info-bar" id="infoBar">
     Em caso de problemas ou dúvidas sobre a data do lançamento do E-book, por favor envie uma mensagem direta!
@@ -1227,5 +1306,18 @@
       });
     });
   </script>
+
+
+<script>
+function showWhatsAppMessage() {
+  const tooltip = document.getElementById('whatsappTooltip');
+  tooltip.classList.add('visible');
+  setTimeout(() => {
+    tooltip.classList.remove('visible');
+  }, 3000);
+}
+</script>
+
+
 </body>
 </html>
